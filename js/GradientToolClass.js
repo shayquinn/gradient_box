@@ -251,6 +251,7 @@ export class GradientEditor {
 
         this.disableElements('#boxline1', true);
         this.disableElements('#boxline2', true);
+        
     }
 
     setupEventListeners() {
@@ -464,8 +465,6 @@ export class GradientEditor {
             const startLeft = parseFloat(tag.style.left);
             const rail = type === 'opacity' ? this.topRail : this.bottomRail;
 
-
-
             const onMouseMove = (e) => {
                 const deltaX = e.clientX - startX;
                 const newLeft = Math.min(Math.max(startLeft + (deltaX / rail.clientWidth) * 100, 0), 100);
@@ -499,9 +498,10 @@ export class GradientEditor {
 
         if (type === 'opacity') {
             this.disableElements('#boxline1', false);
-            this.disableElements('#boxline2', true);
+            this.disableElements('#boxline2', true);  
             this.opacityStops[index] = position;
             this.locationInput1.value = position;
+            this.opacityInput.value = this.opacities[index];
         } else if (type === 'color') {
             this.disableElements('#boxline1', true);
             this.disableElements('#boxline2', false);
